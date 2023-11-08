@@ -5,10 +5,10 @@ using UnityEngine.UI;
 
 public class HealthBar : MonoBehaviour
 {
+    public GameObject enemyDie;
     public Slider slider;
     public Gradient gradient;
     public Image fill;
-
     public void SetMaxHealth(int health){
         slider.maxValue = health;
         slider.value = health;
@@ -21,7 +21,10 @@ public class HealthBar : MonoBehaviour
         fill.color = gradient.Evaluate(slider.normalizedValue);
     }
     void Update() {
-        
+        if (slider.value == 0){
+            Destroy(enemyDie);
+
+        }
     }
 }
 
